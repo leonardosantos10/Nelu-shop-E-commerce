@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Casas Bahianas - Prototipo</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="logo">CASAS BAHIANAS</div>
+        <div class="busca">
+            <input type="text" id="inputBusca" placeholder="Buscar produtos...">
+            <button id="btnBusca">🔎</button>
+        </div>
+        <nav class="links-topo">
+            <a href="#">Minha Conta</a>
+            <a href="#">Pedidos</a>
+            <a href="#" class="carrinho">🛒 Carrinho</a>
+        </nav>
+    </header>
+
+    <nav class="categorias">
+        <a href="javascript:void(0)" onclick="trocarCategoria('vitrine-todos')"><i class="fa-solid fa-border-all"></i> Todos</a>
+        <a href="javascript:void(0)" onclick="trocarCategoria('vitrine-celulares')"><i class="fa-solid fa-mobile-screen-button"></i> Celulares</a>
+        <a href="javascript:void(0)" onclick="trocarCategoria('vitrine-eletronicos')"><i class="fa-solid fa-mobile-retro"></i> Eletrônicos</a>
+        <a href="javascript:void(0)" onclick="trocarCategoria('vitrine-moveis')"><i class="fa-solid fa-chair"></i> Móveis</a>
+        <a href="javascript:void(0)" onclick="trocarCategoria('vitrine-eletrodomesticos')"><i class="fa-solid fa-kitchen-set"></i> Eletrodomésticos</a>
+        <a href="javascript:void(0)" onclick="trocarCategoria('vitrine-informatica')"><i class="fa-solid fa-laptop"></i> Informática</a>
+        <a href="javascript:void(0)" onclick="trocarCategoria('vitrine-ofertas')"><i class="fa-solid fa-tag"></i> Ofertas do Dia</a>
+    </nav>
+
+    <section class="banner-black-friday">
+        <div class="conteudo-banner">
+            <h1>Black Friday</h1>
+            <p>Até 50% de desconto em produtos selecionados</p>
+        </div>
+    </section>
+
+
+     <!-- Vitrine de celulares -->
+
+    <section class="vitrine aba-conteudo" id="vitrine-celulares">
+        <div class="produto-card">
+            <div class="produto-imagem">
+                <img src="imgs/iphone16.png" alt="iPhone 15 Pro">
+            </div>
+            <div class="produto-info">
+                <h3>IPhone 16 Pro 512GB Titânio Preto</h3>
+                <p>Câmera Principal:48MP,  Câmera Frontal: 12MP Processador: APPLE A18 PRO</p>
+                <span class="preco">R$ 7.153,52</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-imagem">
+                <img src="imgs/Iphone15pro-max.png" alt="Samsung Galaxy A33">
+            </div>
+            <div class="produto-info">
+                <h3>IPhone 15 Pro Max 256GB Titânio</h3>
+                <p>Câmera Principal: 48MP, Câmera Frontal:12MP,Processador: APPLE A17 PRO</p>
+                <span class="preco">R$ 5.235,12</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-imagem">
+                <img src="imgs/IPhone13.png" alt="Samsung Galaxy A52s">
+            </div>
+            <div class="produto-info">
+                <h3>IPhone 13 256GB</h3>
+                <p>Câmera Principal: 12MP+12MP Câmera Frontal: 12MP Processador: APPLE A15 BIONIC</p>
+                <span class="preco">R$ 2.577,52</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-imagem">
+                <img src="imgs/iphone14.png" alt="Iphone XR">
+            </div>
+            <div class="produto-info">
+                <h3>IPhone 14 128GB </h3>
+                <p>Câmera Frontal: 12MP, Processador: Apple A15 Bionic</p>
+                <span class="preco">R$ 2.753,52</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/IPhone-12.png" alt="Iphone XR"></div>
+            <div class="produto-info">
+                <h3>IPhone 12 256GB </h3>
+                <p>Câmera Frontal: 12 MP, Processador: 64bits - Apple A14 Bionic</p>
+                <span class="preco">R$ 8.999,00</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/Samsung-GalaxyA32.png" alt="Iphone XR"></div>
+            <div class="produto-info">
+                <h3>Samsung Galaxy A32 128GB Preto Outlet</h3>
+                <p>Câmera Frontal: 20MP, Processador: MEDIATEK HELIO G80 (12 NM)</p>
+                <span class="preco">R$ 439,12</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/samsung-galaxyS23.png" alt="Iphone XR"></div>
+            <div class="produto-info">
+                <h3>Samsung Galaxy S23 128 GB</h3>
+                <p>Câmera Frontal: 12MP,  Processador:QUALCOMM SNAPDRAGON 8 GEN 2</p>
+                <span class="preco">R$ 1.803,02</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/samsung-galaxyS20.png" alt="Iphone XR"></div>
+            <div class="produto-info">
+                <h3>Samsung Galaxy S20</h3>
+                <p>(6GB RAM) 128GB</p>
+                <span class="preco">R$ 817,52</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/Samsung -galaxyS22.png" alt="Iphone XR"></div>
+            <div class="produto-info">
+                <h3>Samsung Galaxy S22 128GB</h3>
+                <p> 8GB RAM e Tela 6,1″ FHD+ Preto</p>
+                <span class="preco">R$ 1.345,52</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/Samsung-galaxyA14.png" alt="Iphone XR"></div>
+            <div class="produto-info">
+                <h3>Samsung Galaxy A14 5G 128GB Prata</h3>
+                <p>Câmera Frontal: 13MP,  Processador: SAMSUNG EXYNOS 1330 (7 NM)</p>
+                <span class="preco">R$ 606,32</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vitrine de eletrônicos -->
+
+    <section class="vitrine aba-conteudo" id="vitrine-eletronicos">
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/relogio-smartwatch.png" alt="QCY Watch GS S6"></div>
+            <div class="produto-info">
+                <h3>Rélogio QCY Watch GS S6</h3>
+                <p>Modelo: WA22GTSA, Pulseira de Sílica</p>
+                <span class="preco">R$ 239,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+    </section>
+
+     <!-- Vitrine de móveis -->
+
+
+      <section class="vitrine aba-conteudo" id="vitrine-moveis">
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/guarda-roupa.png" alt="QCY Watch GS S6"></div>
+            <div class="produto-info">
+                <h3>Guarda Roupas</h3>
+                <p>Casal 8 Portas 2 Gavetas Marajó Moval</p>
+                <span class="preco">R$ 999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/guarda-roupas2.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Casal 7 Portas 2 Gavetas Lisboa Aramóveis</h3>
+                <p>Guarda Roupas</p>
+                <span class="preco">R$ 599,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Vitrine de eletrodomésticos -->
+
+     <section class="vitrine aba-conteudo" id="vitrine-eletrodomesticos">
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/relogio-smartwatch.png" alt="QCY Watch GS S6"></div>
+            <div class="produto-info">
+                <h3>Moveis</h3>
+                <p>Modelo: WA22GTSA, Pulseira de Sílica</p>
+                <span class="preco">R$ 239,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Moveis</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Video Game Xbox Series S</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Vitrine de informática  -->
+
+    <section class="vitrine aba-conteudo" id="vitrine-informatica">
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/relogio-smartwatch.png" alt="QCY Watch GS S6"></div>
+            <div class="produto-info">
+                <h3>Informática</h3>
+                <p>Modelo: WA22GTSA, Pulseira de Sílica</p>
+                <span class="preco">R$ 239,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Informática</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Informática</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Informática</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Informática</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Informática</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Informática</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Informática</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Informática</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Informática</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vitrine de ofertas do dia  -->
+
+    <section class="vitrine aba-conteudo" id="vitrine-ofertas">
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/relogio-smartwatch.png" alt="QCY Watch GS S6"></div>
+            <div class="produto-info">
+                <h3>Oferta</h3>
+                <p>Modelo: WA22GTSA, Pulseira de Sílica</p>
+                <span class="preco">R$ 239,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Oferta</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Oferta</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Oferta</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Oferta</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Oferta</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Oferta</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Oferta</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Oferta</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+
+         <div class="produto-card">
+            <div class="produto-imagem"><img src="imgs/videogame.png" alt="Xbox Series S"></div>
+            <div class="produto-info">
+                <h3>Oferta</h3>
+                <p>Processamento de nova geração</p>
+                <span class="preco">R$ 2.999,99</span>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="rodape">
+    <div class="rodape-container">
+        <div class="rodape-coluna">
+            <h3>Atendimento</h3>
+            <ul>
+                <li><a href="#">Central de Atendimento</a></li>
+                <li><a href="#">Como Comprar</a></li>
+                <li><a href="#">Entregas e Frete</a></li>
+                <li><a href="#">Trocas e Devoluções</a></li>
+            </ul>
+        </div>
+
+        <div class="rodape-coluna">
+            <h3>Institucional</h3>
+            <ul>
+                <li><a href="#">Sobre a Casas Bahianas</a></li>
+                <li><a href="#">Nossas Lojas</a></li>
+                <li><a href="#">Trabalhe Conosco</a></li>
+                <li><a href="#">Política de Privacidade</a></li>
+            </ul>
+        </div>
+
+        <div class="rodape-coluna">
+            <h3>Siga-nos</h3>
+            <div class="redes-sociais">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <h3>Pagamento</h3>
+            <div class="pagamento-icones">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-pix"></i>
+                <i class="fa-solid fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="rodape-inferior">
+        <p>&copy; 2026 CASAS BAHIANAS - Todos os direitos reservados. Imagens meramente ilustrativas.</p>
+    </div>
+</footer>
+
+    <!-- <section class="vitrine aba-conteudo" id="vitrine-moveis" style="display: none; padding: 50px; text-align: center;">
+        <h2>Seção de Móveis em breve...</h2>
+    </section> -->
+
+    <!-- <script>
+    function trocarCategoria(idCategoria) {
+        // 1. Seleciona todas as vitrines que têm a classe aba-conteudo
+        const vitrines = document.querySelectorAll('.aba-conteudo');
+
+        // 2. Lógica para o botão "Todos"
+        if (idCategoria === 'vitrine-todos') {
+            vitrines.forEach(v => v.style.display = 'grid');
+        } else {
+            // 3. Esconde todas as vitrines
+            vitrines.forEach(v => v.style.display = 'none');
+
+            // 4. Mostra apenas a clicada usando grid para manter o layout dos cards
+            const vitrineSelecionada = document.getElementById(idCategoria);
+            if (vitrineSelecionada) {
+                vitrineSelecionada.style.display = 'grid';
+            }
+ 
+    </script> -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>

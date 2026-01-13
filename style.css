@@ -1,0 +1,342 @@
+:root {
+    --cor-primaria: #004c96; /* Azul Escuro */
+    --cor-secundaria: #ffdd00; /* Amarelo */
+    --cor-texto: #333;
+    --cor-fundo: #f5f5f5;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 65px; /* Ajuste este valor de acordo com a altura do seu header */
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+
+.cabecalho {
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed; /* Fixa o elemento em relação à tela */
+    top: 0;          /* Cola no topo */
+    left: 0;         /* Cola na esquerda */
+    width: 100%;     /* Garante que ocupe toda a largura */
+    z-index: 1000;   /* Garante que fique por cima de todos os outros elementos */
+    box-sizing: border-box; /* Evita que o padding aumente o tamanho final do header */
+}
+
+    
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.busca {
+    display: flex;
+}
+
+.busca input {
+    padding: 8px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    width: 300px;
+}
+
+
+.busca button {
+    padding: 8px 12px;
+    background-color: var(--cor-secundaria);
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    color: var(--cor-primaria);
+    font-weight: bold;
+}
+
+
+.links-topo {
+       display: flex;
+    align-items: center;
+}
+    
+
+
+.links-topo a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+
+/* --- MENU DE CATEGORIAS --- */
+.categorias {
+    background-color: var(--cor-secundaria);
+    padding: 10px 30px;
+    text-align: center;
+    
+
+   /* position: fixed; */  /* Fixa o elemento em relação à tela */
+   /* width: 100%;   */  /* Garante que ocupe toda a largura */
+  /*  z-index: 1000;  */  /* Garante que fique por cima de todos os outros elementos */
+  /*  box-sizing: border-box;  */  /* Evita que o padding aumente o tamanho final do header */
+}
+
+.categorias a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 30px;
+    transition: background-color 0.3s;
+    /* ADICIONE ESTAS LINHAS ABAIXO: */
+    display: inline-flex;  /* Faz o ícone e texto ficarem na mesma linha */
+    align-items: center;   /* Centraliza o ícone verticalmente com o texto */
+    gap: 8px;             /* Cria o espaço entre o ícone e o texto */
+}
+
+.categorias a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+}
+
+
+.banner-black-friday {
+    /* Cria o degradê da esquerda para a direita */
+    background: linear-gradient(160deg, #FF4111 0%, #2d73bd 55%);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    width: 100%;
+    
+    /* Faz a barra ficar fixa */
+    /* position: fixed;  */
+    /* top: 100px; /* Ajuste esse valor para ficar abaixo do seu cabeçalho */
+    /* left: 0;  */
+    /* z-index: 100; Garante que fique por cima de outros elementos */
+}
+
+.conteudo-banner h1 {
+    font-size: 48px;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.conteudo-banner p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+
+/* Container Principal da Vitrine */
+.vitrine {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Cria colunas automáticas */
+    gap: 20px;
+    padding: 40px;
+    /* max-width: 1200px;
+    margin: 0 auto; */
+}
+
+
+/* Esconde todas as vitrines por padrão, exceto a primeira ou a que o JS mandar mostrar */
+.aba-conteudo {
+    display: none; 
+}
+
+/* Regra para quando a vitrine estiver ativa (usada pelo JS) */
+.vitrine.ativa {
+    display: grid !important; /* Força o layout de grade dos seus cards */
+}
+
+/* Estilização da mensagem de erro de busca */
+#mensagem-erro {
+    display: none; /* Começa escondida */
+    text-align: center;
+    padding: 30px;
+    color: #003366;
+    font-weight: bold;
+}
+
+
+/* Card Individual */
+.produto-card {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra suave */
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px); /* Efeito ao passar o mouse */
+}
+
+/* Área da Imagem */
+.produto-imagem {
+    background-color: #ffffff;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.produto-imagem img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Informações do Texto */
+.produto-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.produto-info h3 {
+    font-size: 18px;
+    color: #004c96;
+    margin-bottom: 10px;
+}
+
+.produto-info p {
+    font-size: 14px;
+    color: #666;
+    height: 40px; /* Mantém o alinhamento mesmo com textos diferentes */
+    margin-bottom: 15px;
+}
+
+/* Preço em destaque */
+.preco {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #e33e18; /* Laranja da imagem */
+    margin-bottom: 15px;
+}
+
+/* Botão com Degradê */
+.btn-comprar {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(to right, #e33e18, #3174b5); /* Degradê igual ao banner */
+    transition: opacity 0.3s;
+}
+
+.btn-comprar:hover {
+    opacity: 0.9;
+}
+
+
+
+
+/* Estilização Geral do Rodapé */
+ .rodape {
+    background-color: #003366; /* Azul Escuro combinando com o Header */
+    color: #ffffff;
+    padding: 10px 0 10px 0;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.rodape-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.rodape-coluna {
+    /* flex: 1; */
+    min-width: 250px;
+    margin-bottom: 10px;
+}
+
+.rodape-coluna h3 {
+    color: #ffdb00; /* Amarelo das Casas Bahianas */
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.rodape-coluna ul {
+    list-style: none;
+    padding: 0;
+}
+
+.rodape-coluna ul li {
+    margin-bottom: 10px;
+}
+
+.rodape-coluna ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.rodape-coluna ul li a:hover {
+    color: #ffdb00;
+}
+
+/* Redes Sociais e Pagamento */
+.redes-sociais a, .pagamento-icones i {
+    font-size: 24px;
+    margin-right: 0;
+    color: #ffffff;
+    cursor: pointer;
+
+    margin-left: 10px; /* Isso cria um espaçamento pequeno entre eles */
+    text-decoration: none; /* Garante que não haja sublinhado nos links */
+}
+
+
+/* Remove o espaço do primeiro ícone para não ficar torto no centro */
+.redes-sociais a:first-child, .pagamento-icones i:first-child {
+    margin-left: 0;
+}
+
+.pagamento-icones {
+    margin-top: 10px;
+    display: flex;       /* Garante que fiquem alinhados */
+    justify-content: center; /* Mantém no centro */
+}
+
+
+.redes-sociais {
+    display: flex;       /* Garante que fiquem alinhados */
+    justify-content: center; /* Mantém no centro */
+}
+
+.pagamento-icones i:hover {
+    color: #ffdb00;
+}
+
+/* Linha Final */
+.rodape-inferior {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 20px;
+    font-size: 12px;
+} 
