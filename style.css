@@ -17,7 +17,7 @@ body {
 .cabecalho {
     background-color: var(--cor-primaria);
     color: white;
-    padding: 15px 30px;
+    padding: 23px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,35 +31,61 @@ body {
 }
 
     
-}
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
+    font-size: 18px;
+    font-weight: 200;
+    font-family: 'Arial Black', sans-serif; /* Uma fonte que já é naturalmente mais grossa */
+     
+    background: linear-gradient(to right, #e3421e, #4676ae);
 }
+
+/* .busca {
+    display: flex;
+} */
 
 .busca {
     display: flex;
+    flex: 1;               /* Faz a busca tentar ocupar o espaço */
+    justify-content: center; /* Centraliza o conteúdo dentro desse espaço */
+    max-width: 300px;      /* Impede que a busca fique larga demais em telas grandes */
+    margin: 0 20px;        /* Espaço para não encostar na logo nem no carrinho */
 }
 
+
+.busca {
+    position: absolute; /* Remove a busca do fluxo comum */
+    left: 50%;         /* Joga o início da busca no meio da tela */
+    transform: translateX(-50%); /* Puxa ela de volta metade do seu próprio tamanho */
+    display: flex;
+    width: 100%;
+    max-width: 300px;  /* Largura ideal para a barra central */
+    z-index: 10;
+}
+
+
 .busca input {
-    padding: 8px;
+    flex: 1; /* Faz o input ocupar todo o espaço do max-width */
+    padding: 10px 15px;
     border: none;
-    border-radius: 4px 0 0 4px;
-    width: 300px;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    font-size: 16px;
 }
 
 
 .busca button {
-    padding: 8px 12px;
-    background-color: var(--cor-secundaria);
+    padding: 10px 20px;
+    background-color: #ffdb00; /* Amarelo da Casas Bahianas */
     border: none;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 8px 8px 0;
     cursor: pointer;
-    color: var(--cor-primaria);
-    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 
 .links-topo {
@@ -80,13 +106,13 @@ body {
 /* --- MENU DE CATEGORIAS --- */
 .categorias {
     background-color: var(--cor-secundaria);
-    padding: 10px 30px;
+    padding: 18px 30px 15px;
     text-align: center;
     
 
-   /* position: fixed; */  /* Fixa o elemento em relação à tela */
-   /* width: 100%;   */  /* Garante que ocupe toda a largura */
-  /*  z-index: 1000;  */  /* Garante que fique por cima de todos os outros elementos */
+   position: fixed;  /* Fixa o elemento em relação à tela*/
+    width: 100%;     /* Garante que ocupe toda a largura */
+   z-index: 1000;    /* Garante que fique por cima de todos os outros elementos */
   /*  box-sizing: border-box;  */  /* Evita que o padding aumente o tamanho final do header */
 }
 
@@ -113,28 +139,37 @@ body {
     background: linear-gradient(160deg, #FF4111 0%, #2d73bd 55%);
     color: white;
     text-align: center;
-    padding: 60px 20px;
+    /* padding: 60px 20px;  */
     width: 100%;
+}
+
+
+/* Focando apenas nos textos internos */
+
+.conteudo-banner {
+    /* Centraliza o bloco de texto horizontalmente */
+    margin: 0 auto; 
     
-    /* Faz a barra ficar fixa */
-    /* position: fixed;  */
-    /* top: 100px; /* Ajuste esse valor para ficar abaixo do seu cabeçalho */
-    /* left: 0;  */
-    /* z-index: 100; Garante que fique por cima de outros elementos */
+    /* Cria o espaço interno para que o texto não chegue perto das bordas */
+    /* 1º valor: Topo | 2º valor: Laterais | 3º valor: Base */
+    padding: 80px 20px 60px; 
+    
+    text-align: center;
+    max-width: 800px; /* Evita que o texto fique muito esticado em telas grandes */
 }
 
 .conteudo-banner h1 {
-    font-size: 48px;
-    margin: 0;
-    text-transform: uppercase;
-    font-weight: bold;
+    font-size: 56px;
+    font-weight: 900;    /* Deixa a fonte bem grossa como você pediu */
+    margin: 0;           /* Remove margens que podem empurrar o texto para baixo */
+    line-height: 1.1;    /* Ajusta a altura da linha para o H1 */
 }
 
 .conteudo-banner p {
-    font-size: 18px;
-    margin-top: 10px;
+    font-size: 20px;
+    margin: 15px 0 0 0;  /* Apenas margem no topo para separar do H1 */
+    padding: 0;
 }
-
 
 
 /* Container Principal da Vitrine */
@@ -168,22 +203,11 @@ body {
 }
 
 
-/* Card Individual */
-/*.produto-card {
-    background-color: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-    transition: transform 0.3s;
-    display: flex;
-    flex-direction: column;
-}
-
-*/
 
 .produto-card {
     display: flex;
     flex-direction: column; /* Organiza os itens em coluna */
+    
     justify-content: space-between; /* Distribui o espaço entre o topo e o fundo */
     background: #fff;
     border-radius: 15px;
@@ -215,14 +239,6 @@ body {
 }
 
 /* Informações do Texto */
-/* .produto-info {
-   text-align: center;    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 180px;         
-} */
-
 
 .produto-info {
     flex-grow: 1; /* Faz com que esta parte "estique" para ocupar o espaço vazio */
@@ -232,6 +248,8 @@ body {
 
 .produto-info h3 {
     font-size: 16px;
+    align-items: center;
+    text-align: center;
     margin-bottom: 8px;
     height: 40px;          /* Altura fixa para o título (geralmente 2 linhas) */
     overflow: hidden;      /* Esconde texto que sobrar */
@@ -239,6 +257,8 @@ body {
 
 .produto-info p {
    font-size: 12px;
+   text-align: center;
+   align-items: center;
     color: #666;
     height: 50px;          /* Altura fixa para a descrição */
     overflow: hidden;
@@ -247,25 +267,12 @@ body {
 /* Preço em destaque */
 .preco {
     display: block;
+    text-align: center;
     font-size: 20px;
     font-weight: bold;
     color: #e33e18; /* Laranja da imagem */
     margin-bottom: 15px;
 }
-
-/* Botão com Degradê */
-/* .btn-comprar {
-    margin-top: auto;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    background: linear-gradient(to right, #e33e18, #3174b5); 
-    transition: opacity 0.3s;
-} */
 
 
 .btn-comprar {
@@ -284,9 +291,6 @@ body {
     background: linear-gradient(to right, #e3421e, #4676ae); 
     transition: transform 0.2s;
 }
-
-
-
 
 
 
