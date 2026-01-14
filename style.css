@@ -169,15 +169,28 @@ body {
 
 
 /* Card Individual */
-.produto-card {
+/*.produto-card {
     background-color: #fff;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra suave */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
 }
+
+*/
+
+.produto-card {
+    display: flex;
+    flex-direction: column; /* Organiza os itens em coluna */
+    justify-content: space-between; /* Distribui o espaço entre o topo e o fundo */
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
 
 .produto-card:hover {
     transform: translateY(-5px); /* Efeito ao passar o mouse */
@@ -185,11 +198,14 @@ body {
 
 /* Área da Imagem */
 .produto-imagem {
-    background-color: #ffffff;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 200px;         /* Define uma altura fixa para todas as imagens serem iguais */
+    display: flex;         /* Ativa o flexbox para centralizar */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    padding: 15px;         /* Cria o "respiro" para a imagem não colar na borda */
+    background-color: #fff; /* Garante fundo branco se a imagem for menor */
+    box-sizing: border-box;
 }
 
 .produto-imagem img {
@@ -199,22 +215,33 @@ body {
 }
 
 /* Informações do Texto */
+/* .produto-info {
+   text-align: center;    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 180px;         
+} */
+
+
 .produto-info {
-    padding: 20px;
-    text-align: left;
+    flex-grow: 1; /* Faz com que esta parte "estique" para ocupar o espaço vazio */
+    display: flex;
+    flex-direction: column;
 }
 
 .produto-info h3 {
-    font-size: 18px;
-    color: #004c96;
-    margin-bottom: 10px;
+    font-size: 16px;
+    margin-bottom: 8px;
+    height: 40px;          /* Altura fixa para o título (geralmente 2 linhas) */
+    overflow: hidden;      /* Esconde texto que sobrar */
 }
 
 .produto-info p {
-    font-size: 14px;
+   font-size: 12px;
     color: #666;
-    height: 40px; /* Mantém o alinhamento mesmo com textos diferentes */
-    margin-bottom: 15px;
+    height: 50px;          /* Altura fixa para a descrição */
+    overflow: hidden;
 }
 
 /* Preço em destaque */
@@ -227,7 +254,8 @@ body {
 }
 
 /* Botão com Degradê */
-.btn-comprar {
+/* .btn-comprar {
+    margin-top: auto;
     width: 100%;
     padding: 12px;
     border: none;
@@ -235,12 +263,36 @@ body {
     color: white;
     font-weight: bold;
     cursor: pointer;
-    background: linear-gradient(to right, #e33e18, #3174b5); /* Degradê igual ao banner */
+    background: linear-gradient(to right, #e33e18, #3174b5); 
     transition: opacity 0.3s;
+} */
+
+
+.btn-comprar {
+    margin-top: auto; /* A MÁGICA: Empurra o botão para a base do container flex */
+    
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    
+    /* Degradê idêntico à sua primeira imagem */
+    background: linear-gradient(to right, #e3421e, #4676ae); 
+    transition: transform 0.2s;
 }
+
+
+
+
+
 
 .btn-comprar:hover {
     opacity: 0.9;
+    transform: scale(1.02); /* Pequeno efeito de destaque ao passar o mouse */
 }
 
 
