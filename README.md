@@ -19,12 +19,5 @@ Este é um projeto de estudo de uma interface de e-commerce moderna, focada em p
 
 ## 🎨 Identidade Visual
 
-O projeto utiliza as cores clássicas do varejo para transmitir confiança e dinamismo:
-* **Primária:** Azul Escuro (`#004c96`) - Utilizado no cabeçalho e menu lateral.
-* **Secundária:** Amarelo (`#ffdd00`) - Utilizado na barra de categorias desktop e botões de destaque.
 
-## 🛠️ Como executar o projeto
 
-1. Clone o repositório:
-   ```bash
-   git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
