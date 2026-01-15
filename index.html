@@ -12,9 +12,9 @@
     <div class="menu-overlay" id="menu-overlay"></div>
 
     <header class="cabecalho">
-        <button class="menu-mobile-btn" id="btn-menu-abrir">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+        <button class="menu-hamburguer" id="btn-menu-abrir">
+           <i class="fa-solid fa-bars"></i>
+       </button>
         <div class="logo">NELU SHOP</div>
         <div class="busca">
             <input type="text" id="inputBusca" placeholder="Buscar produtos...">
@@ -25,7 +25,8 @@
         </nav>
     </header>
 
-    <nav class="categorias">
+    <nav class="categorias"  id="menu-categorias">
+        <button class="menu-close-btn" id="btn-menu-fechar">&times;</button>
         <a href="javascript:void(0)" onclick="trocarCategoria('vitrine-todos')"><i class="fa-solid fa-border-all"></i> Todos</a>
         <a href="javascript:void(0)" onclick="trocarCategoria('vitrine-celulares')"><i class="fa-solid fa-mobile-screen-button"></i> Celulares</a>
         <a href="javascript:void(0)" onclick="trocarCategoria('vitrine-eletronicos')"><i class="fa-solid fa-mobile-retro"></i> Eletrônicos</a>

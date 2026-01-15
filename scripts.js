@@ -283,33 +283,32 @@ window.onload = () => {
 
 
 
-// --- CONTROLE DO MENU HAMBÚRGUER ---
-const btnAbrirMenu = document.getElementById('btn-menu-abrir');
-const btnFecharMenu = document.getElementById('btn-menu-fechar');
-const menuCategorias = document.getElementById('menu-categorias');
-const menuOverlay = document.getElementById('menu-overlay');
+// Funções para o Menu Mobile
+const btnAbrir = document.getElementById('btn-menu-abrir');
+const btnFechar = document.getElementById('btn-menu-fechar');
+const menuCat = document.getElementById('menu-categorias');
+const overlay = document.getElementById('menu-overlay');
 
-function toggleMobileMenu(open) {
-    if (open) {
-        menuCategorias.classList.add('active');
-        menuOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
+function gerenciarMenu(abrir) {
+    if (abrir) {
+        menuCat.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Trava a tela
     } else {
-        menuCategorias.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        menuCat.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Destrava
     }
 }
 
-btnAbrirMenu?.addEventListener('click', () => toggleMobileMenu(true));
-btnFecharMenu?.addEventListener('click', () => toggleMobileMenu(false));
-menuOverlay?.addEventListener('click', () => toggleMobileMenu(false));
+// Ouvintes de eventos
+btnAbrir?.addEventListener('click', () => gerenciarMenu(true));
+btnFechar?.addEventListener('click', () => gerenciarMenu(false));
+overlay?.addEventListener('click', () => gerenciarMenu(false));
 
-// Fecha o menu ao clicar em uma categoria (importante para mobile)
+// Fecha o menu se clicar em qualquer link de categoria (importante!)
 document.querySelectorAll('.categorias a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-            toggleMobileMenu(false);
-        }
-    });
+    link.addEventListener('click', () => gerenciarMenu(false));
 });
+
+
