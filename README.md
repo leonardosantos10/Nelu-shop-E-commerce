@@ -17,7 +17,7 @@ Este é um projeto de estudo de uma interface de e-commerce moderna, focada em p
 * **Carrinho Interativo:** Sidebar lateral para visualização de itens, com formulário de finalização de pedido integrado.
 * **Busca em Tempo Real:** Filtro que permite encontrar produtos dentro da vitrine de forma ágil.
 
-## 🎨 Identidade Visual
+## 
 
 
 
