@@ -709,12 +709,8 @@ body {
 /* Esconde botões mobile por padrão no PC */
 
 
-
-/* .menu-mobile-btn, .menu-close-btn, .menu-overlay {
-    display: none;
-} */
-
 /* Esconde o botão e elementos mobile por padrão no desktop */
+
 .menu-hamburguer, .menu-close-btn, .menu-overlay {
     display: none;
 }
@@ -727,20 +723,20 @@ body {
         gap: 15px;
     }
     .categorias {
-        padding: 10px 10px; /* Reduz o respiro lateral */
+        padding: 10px 10px; 
         display: flex;
         justify-content: center;
-        flex-wrap: nowrap; /* Impede que quebrem linha como na imagem */
+        flex-wrap: nowrap; 
     }
 
     .categorias a {
-        margin: 0 15px; /* Diminui muito o espaço entre os nomes */
-        font-size: 15px; /* Diminui o texto para caber tudo */
-        gap: 5px; /* Diminui o espaço entre o ícone e o texto */
+        margin: 0 15px; 
+        font-size: 15px; 
+        gap: 5px; 
     }
 
     .categorias i {
-        font-size: 15px; /* Diminui levemente os ícones */
+        font-size: 15px; 
     }
 }
 
@@ -755,11 +751,9 @@ body {
 
 
 @media (max-width: 770px) {
-    /* Ajuste de respiro do topo */
     body { padding-top: 0;
-     }
 
-    /* Header Mobile */
+     }
     .cabecalho {
         display: flex;
         flex-wrap: wrap;
@@ -773,51 +767,41 @@ body {
         color: white;
         font-size: 25px;
         cursor: pointer;
-        order: 1; /* Fica na esquerda */
+        order: 1;
     }
 
-
-    /* .menu-mobile-btn {
-      /*  display: block !important; /* Força aparecer */
-      /*  background: none;
-        border: none;
-        color: white;
-        font-size: 25px;
-        cursor: pointer;
-        order: 1;
-    } */
-
     .logo {
-        order: 3; /* Fica no meio */
+        order: 3; 
         flex: 1;
         text-align: center;
         margin: auto;
         font-size: 18px;
-        -webkit-text-fill-color: white; /* No mobile, melhor deixar branco puro para ler bem */
+        -webkit-text-fill-color: white; 
     }
 
     .links-topo {
-        order: 3; /* Carrinho na direita */
+        order: 3; 
     }
 
     /* Ajuste da busca no Mobile */
     .busca {
-        display: none; /* Geralmente busca em mobile fica dentro do menu ou em nova linha */
+        display: none; 
     }
 
     .links-topo a span:not(#cart-count) {
-        display: none; /* Esconde a palavra "Carrinho" */
+        display: none; 
     }
 
       /* Busca mobile */
+
     .busca {
         order: 4;
-        position: static;        /* REMOVE absolute */
-        transform: none;         /* REMOVE translateX */
+        position: static;        
+        transform: none;         
         width: 40%;             
         max-width: 100%;
         margin: 10px 0 5px 0;
-        padding: 0 10px;         /* respiro lateral */
+        padding: 0 10px;         
         box-sizing: border-box;
     }
 
@@ -831,15 +815,16 @@ body {
     }
 
     /* MENU CATEGORIAS (O MENU LATERAL) */
+
     .categorias {
         position: fixed;
         top: 0;
-        left: -100%; /* Escondido */
+        left: -100%; 
         width: 280px;
         height: 100vh;
-        background: white;
+        background-color: #004c96 !important;
         z-index: 9999;
-        display: flex !important; /* Sobrescreve o display do desktop */
+        display: flex !important; 
         flex-direction: column;
         align-items: flex-start;
         padding: 60px 20px;
@@ -848,11 +833,11 @@ body {
     }
 
     .categorias.active {
-        left: 0; /* Desliza para dentro */
+        left: 0; 
     }
 
     .categorias a {
-        color: #004c96 !important;
+        color: #ffffff !important;
         margin: 10px 0;
         width: 100%;
         font-size: 18px;
@@ -861,6 +846,7 @@ body {
     }
 
     /* Botão fechar (X) */
+
     .menu-close-btn {
         display: block !important;
         position: absolute;
@@ -874,6 +860,7 @@ body {
     }
 
     /* Overlay (Fundo Escuro) */
+
     .menu-overlay {
         position: fixed;
         top: 0;
@@ -892,6 +879,7 @@ body {
     
 
     /* Vitrine Mobile - 2 colunas */
+    
     .vitrine {
         grid-template-columns: repeat(2, 1fr) !important;
         padding: 15px;
