@@ -40,17 +40,14 @@ body {
     background: linear-gradient(to right, #e3421e, #4676ae);
 }
 
+
 /* .busca {
     display: flex;
+    flex: 1;               
+    justify-content: center; 
+    max-width: 300px;      
+    margin: 0 20px;       
 } */
-
-.busca {
-    display: flex;
-    flex: 1;               /* Faz a busca tentar ocupar o espaço */
-    justify-content: center; /* Centraliza o conteúdo dentro desse espaço */
-    max-width: 300px;      /* Impede que a busca fique larga demais em telas grandes */
-    margin: 0 20px;        /* Espaço para não encostar na logo nem no carrinho */
-}
 
 
 .busca {
@@ -61,6 +58,7 @@ body {
     width: 100%;
     max-width: 300px;  /* Largura ideal para a barra central */
     z-index: 10;
+    margin-bottom: 8px;
 }
 
 
@@ -75,7 +73,7 @@ body {
 
 
 .busca button {
-    padding: 10px 20px;
+    padding: 10px 10px;
     background-color: #ffdb00; /* Amarelo da Casas Bahianas */
     border: none;
     border-radius: 0 8px 8px 0;
@@ -84,6 +82,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1; /* para evitar espaços extras verticais */
 }
 
 
@@ -129,7 +128,7 @@ body {
 }
 
 .categorias a:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.65);
     border-radius: 4px;
 }
 
@@ -188,10 +187,11 @@ body {
     display: none; 
 }
 
-/* Regra para quando a vitrine estiver ativa (usada pelo JS) */
+/* Regra para quando a vitrine estiver ativa (usada pelo JS)
 .vitrine.ativa {
-    display: grid !important; /* Força o layout de grade dos seus cards */
+    display: grid !important; /* Força o layout de grade dos seus cards 
 }
+*/
 
 /* Estilização da mensagem de erro de busca */
 #mensagem-erro {
@@ -207,6 +207,8 @@ body {
 .produto-card {
     display: flex;
     flex-direction: column; /* Organiza os itens em coluna */
+    max-width: 250px;  /* ...mas nunca passa deste tamanho (ajuste conforme seu gosto) */
+    min-height: 250  px; /* Mantém a altura sempre igual */
     
     justify-content: space-between; /* Distribui o espaço entre o topo e o fundo */
     background: #fff;
@@ -396,3 +398,424 @@ body {
     margin-top: 20px;
     font-size: 12px;
 } 
+
+
+/* * Fundo escuro atrás do carrinho */
+/*
+.cart-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1500;
+} */
+
+/*
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+
+
+/* Área de conteúdo com Scroll Vertical 
+/*.cart-content {
+    flex: 1;
+    overflow-y: auto; 
+    padding: 20px;
+}
+*/
+
+.tab-selection {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/*
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f8f8f8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.tab-btn.active {
+    background: #2d4a6a; 
+    color: white;
+}
+*/
+
+/* Ajuste dos inputs para não quebrarem o layout */
+ .form-group {
+    margin-bottom: 15px;
+} 
+
+
+
+
+.cart-sidebar.active {
+    right: 0; /* Desliza para dentro da tela */
+}
+
+/* Área onde os produtos aparecem */
+.cart-body {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+
+/*
+
+ .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+*/
+
+ /* Estilo do Banner que aparece no rodapé do site  */
+ /*
+.view-cart-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #003366;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    display: none;   
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+    z-index: 900;
+} 
+
+*/
+
+
+
+/* Estilização do carrinho de agendamento */
+
+
+
+.cart-item {
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+} 
+
+
+.cart-item img {
+    /* width: 60px;
+    height: 60px;
+    object-fit: contain; */
+
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.cart-item-price {
+    color: var(--cor-alerta);
+    font-weight: bold;
+}
+
+/* Garante que o pagamento mostre apenas 1 selecionado */
+.payment-option input[type="radio"] {
+    accent-color: var(--cor-primaria);
+    margin-right: 10px;
+}
+
+
+/* Rodapé fixo do carrinho  */
+
+
+.coupon-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+
+.coupon-container input {
+    min-width: 0; /* MUITO IMPORTANTE */
+    flex: 1;
+    height: 45px;
+    padding: 0 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    outline: none;
+}
+
+.coupon-container input::placeholder {
+    color: #999;
+}
+
+.coupon-container button {
+    height: 45px;
+    padding: 0 20px;
+    border-radius: 8px;
+    border: none;
+    background: #1f2d3d; /* botão escuro */
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.coupon-container button:hover {
+    opacity: 0.9;
+}
+
+
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background: white;
+}
+
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+
+.summary-line.total {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4d2d; /* laranja/vermelho igual imagem 1 */
+} 
+
+
+/* ==========================================
+   CARRINHO SIDEBAR (AJUSTADO PARA CAMPOS VERTICAIS)
+   ========================================== */
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    z-index: 2500;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    max-width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.15);
+    overflow-x: hidden;
+    
+} 
+
+.cart-sidebar * {
+    box-sizing: border-box;
+}
+
+.cart-sidebar.active {
+      transform: translateX(0);
+}
+
+
+.cart-header {
+    padding: 20px;
+    background: #fff; /* Header branco conforme imagens novas */
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background: #fdfdfd;
+}
+
+/* --- AJUSTE DOS CAMPOS (UM EMBAIXO DO OUTRO) --- */
+.form-group {
+    margin-bottom: 20px; /* Mais espaço entre os blocos */
+    display: flex;
+    flex-direction: column;
+}
+
+.date-time-row {
+    display: flex;
+    flex-direction: column; /* Força CEP e Endereço a ficarem um sob o outro */
+    gap: 0; 
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px; /* Bordas mais arredondadas das imagens */
+    font-size: 15px;
+    background-color: #fff;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #2d4a6a;
+    outline: none;
+}
+
+/* --- BOTÕES DE ENTREGA/RETIRADA --- */
+.options-toggle {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.delivery-btn {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.delivery-btn.active {
+    background: #2d4a6a; /* Azul escuro da imagem */
+    color: white;
+    border-color: #2d4a6a;
+}
+
+/* --- PAGAMENTO --- */
+.payment-options-container h4 {
+    margin: 20px 0 15px;
+    font-size: 16px;
+}
+
+.payment-grid {
+    display: flex;
+    flex-direction: column; /* Pagamento também um embaixo do outro */
+    gap: 10px;
+
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* --- RODAPÉ E BOTÃO FINAL --- */
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background: white;
+}
+
+.finish-order-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(90deg, #e67e22, #3498db); /* Degradê azul/laranja */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.finish-order-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+
+

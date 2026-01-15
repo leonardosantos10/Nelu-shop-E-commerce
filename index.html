@@ -8,16 +8,20 @@
     <title>Casas Bahianas - Prototipo</title>
 </head>
 <body>
+
+    <div class="menu-overlay" id="menu-overlay"></div>
+
     <header class="cabecalho">
+        <button class="menu-mobile-btn" id="btn-menu-abrir">
+            <i class="fa-solid fa-bars"></i>
+        </button>
         <div class="logo">NELU SHOP</div>
         <div class="busca">
             <input type="text" id="inputBusca" placeholder="Buscar produtos...">
             <button id="btnBusca">🔎</button>
         </div>
         <nav class="links-topo">
-            <a href="#">Minha Conta</a>
-            <a href="#">Pedidos</a>
-            <a href="#" class="carrinho">🛒 Carrinho</a>
+           <a href="#" id="open-cart"><i class="fa-solid fa-cart-shopping"></i> Carrinho <span id="cart-count">0</span></a>
         </nav>
     </header>
 
@@ -33,14 +37,15 @@
     <section class="banner-black-friday">
         <div class="conteudo-banner">
             <h1>Black Friday</h1>
-            <p>Até 20% de desconto em produtos selecionados</p>
+            <p>Até 10% de desconto em produtos selecionados</p>
         </div>
     </section>
 
-
+    <div id="mensagem-erro"></div>
      <!-- Vitrine de celulares -->
 
-    <section class="vitrine aba-conteudo" id="vitrine-celulares">
+    <section class="vitrine aba-conteudo" id="vitrine-celulares"
+    data-categoria="celulares smartphone iphone samsung">
         <div class="produto-card">
             <div class="produto-imagem">
                 <img src="imgs/iphone16.png" alt="iPhone 15 Pro">
@@ -147,7 +152,9 @@
 
     <!-- Vitrine de eletrônicos -->
 
-    <section class="vitrine aba-conteudo" id="vitrine-eletronicos">
+    <section class="vitrine aba-conteudo" 
+         id="vitrine-eletronicos"
+         data-categoria="eletronicos tv smartwatch videogame camera">
         <div class="produto-card">
             <div class="produto-imagem"><img src="imgs/Relogio-Smartwatch.png" alt="rélogio Smartwatch Redmi Watch 5"></div>
             <div class="produto-info">
@@ -206,7 +213,9 @@
      <!-- Vitrine de móveis -->
 
 
-      <section class="vitrine aba-conteudo" id="vitrine-moveis">
+      <section class="vitrine aba-conteudo" 
+         id="vitrine-moveis"
+         data-categoria="moveis sofa guarda-roupa cozinha quarto">
         <div class="produto-card">
             <div class="produto-imagem"><img src="imgs/guarda-roupas2.png" alt="Guarda Roupas de Casal"></div>
             <div class="produto-info">
@@ -256,7 +265,9 @@
 
     <!-- Vitrine de eletrodomésticos -->
 
-     <section class="vitrine aba-conteudo" id="vitrine-eletrodomesticos">
+    <section class="vitrine aba-conteudo" 
+         id="vitrine-eletrodomesticos"
+         data-categoria="eletrodomesticos geladeira fogao micro-ondas lavadora">
         <div class="produto-card">
             <div class="produto-imagem"><img src="imgs/micro-ondas.png" alt="Micro-ondas"></div>
             <div class="produto-info">
@@ -310,7 +321,9 @@
 
     <!-- Vitrine de informática  -->
 
-    <section class="vitrine aba-conteudo" id="vitrine-informatica">
+   <section class="vitrine aba-conteudo" 
+         id="vitrine-informatica"
+         data-categoria="informatica notebook computador impressora monitor acessorios">
         <div class="produto-card">
             <div class="produto-imagem"><img src="imgs/notebook14.png" alt="Notebook Samsung Galaxy"></div>
             <div class="produto-info">
@@ -412,8 +425,236 @@
     </div>
 </footer>
 
+ <div class="cart-overlay"></div>
 
-    <script src="script.js"></script>
+<aside class="cart-sidebar">
 
+    <!-- HEADER FIXO -->
+    <div class="cart-header">
+        <h3>Meu Carrinho <i class="fa-solid fa-cart-shopping"></i></h3>
+        <button class="close-cart-btn">&times;</button>
+    </div>
+
+    <!-- CONTEÚDO COM SCROLL -->
+    <!-- <div class="cart-body">
+
+       <!---
+        <div class="cart-items">
+            <p class="empty-cart">Seu carrinho está vazio.</p>
+        </div>
+
+       
+        <div class="options-toggle">
+            <button class="delivery-btn active" data-option="delivery">
+                <i class="fa-solid fa-truck-fast"></i> Entrega
+            </button>
+            <button class="delivery-btn" data-option="pickup">
+                <i class="fa-solid fa-store"></i> Retirada
+            </button>
+        </div>
+
+       
+        <div id="delivery-form-container">
+            <div class="form-group">
+                <label>Seu Nome completo</label>
+                <input type="text" placeholder="Ex: João Silva">
+            </div>
+
+            <div class="form-group">
+                <label>Seu Telefone (WhatsApp)</label>
+                <input type="tel" placeholder="(00) 00000-0000">
+            </div>
+
+            <div class="form-group">
+                <label>Endereço</label>
+                <input type="text" placeholder="Rua, número...">
+            </div>
+
+            <div class="form-group">
+                <label>CEP</label>
+                <input type="text" placeholder="00000-000">
+            </div>
+
+           
+            <div class="payment-options-container">
+                <h4>Forma de Pagamento</h4>
+
+                <label class="payment-option">
+                    <input type="radio" checked> PIX
+                </label>
+                <label class="payment-option">
+                    <input type="radio"> Crédito
+                </label>
+                <label class="payment-option">
+                    <input type="radio"> Débito
+                </label>
+                <label class="payment-option">
+                    <input type="radio"> Dinheiro
+                </label>
+            </div>
+
+           
+            <div class="coupon-container">
+                <input type="text" placeholder="Cupom de desconto">
+                <button>Aplicar</button>
+            </div>
+
+        </div>
+    </div> 
+    */
+-->
+
+
+  <div class="cart-body">
+    <div class="cart-items">
+        <p class="empty-cart">Seu carrinho está vazio.</p>
+    </div>
+
+    <div class="options-toggle">
+        <button class="delivery-btn active" data-option="delivery">
+            <i class="fa-solid fa-truck-fast"></i> Entrega
+        </button>
+        <button class="delivery-btn" data-option="pickup">
+            <i class="fa-solid fa-store"></i> Retirada
+        </button>
+    </div>
+
+    <div id="delivery-form-container">
+        <div class="form-group">
+            <label>Seu Nome completo</label>
+            <input id="cliente-nome" type="text" placeholder="Ex: João Silva">
+        </div>
+        <div class="form-group">
+            <label>Seu Telefone (WhatsApp)</label>
+            <input id="cliente-telefone" type="tel" placeholder="(00) 00000-0000">
+        </div>
+        <div class="form-group">
+            <label>Endereço</label>
+            <input id="cliente-endereco" type="text" placeholder="Rua, número, bairro...">
+        </div>
+        <div class="form-group">
+            <label>CEP</label>
+            <input id="cliente-cep" type="text" placeholder="00000-000">
+        </div>
+    </div>
+
+    <div id="pickup-form-container" style="display: none;">
+        <div class="form-group">
+            <label>Nome de quem retira</label>
+            <input type="text" placeholder="Nome de quem vai buscar">
+        </div>
+        <div class="form-group">
+            <label>Data da Retirada</label>
+            <input type="date">
+        </div>
+        <div class="form-group">
+            <label>Horário da Retirada</label>
+            <select>
+                <option value="">Selecione um horário</option>
+                <option value="10:00">08:00</option>
+                <option value="14:00">09:00</option>
+                <option value="16:00">10:00</option>
+                <option value="16:00">11:00</option>
+                <option value="16:00">12:00</option>
+                <option value="16:00">13:00</option>
+                <option value="16:00">14:00</option>
+                <option value="16:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="16:00">17:00</option>
+                <option value="16:00">18:00</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="payment-options-container">
+        <h4>Forma de Pagamento</h4>
+        <div class="payment-grid">
+            <label class="payment-option">
+                <input type="radio" name="pay" checked> 
+                <span><i class="fa-solid fa-pix"></i> PIX</span>
+            </label>
+            <label class="payment-option">
+                <input type="radio" name="pay"> 
+                <span><i class="fa-solid fa-credit-card"></i> Crédito</span>
+            </label>
+            <label class="payment-option">
+                <input type="radio" name="pay"> 
+                <span><i class="fa-solid fa-credit-card"></i> Débito</span>
+            </label>
+            <label class="payment-option">
+                <input type="radio" name="pay"> 
+                <span><i class="fa-solid fa-money-bill-1"></i> Dinheiro</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="coupon-container">
+        <input type="text" placeholder="Cupom de desconto">
+        <button>Aplicar</button>
+    </div>
+</div> 
+
+
+
+
+<!-- <div class="cart-body">
+    <div id="cart-items-list" class="cart-items-container">
+        </div>
+
+    <div class="options-toggle">
+        <button class="delivery-btn active" data-option="delivery">Entrega</button>
+        <button class="delivery-btn" data-option="pickup">Retirada</button>
+    </div>
+
+    <div id="delivery-form-container">
+        <div class="form-group">
+            <label>Nome Completo</label>
+            <input type="text" id="cust-name" placeholder="Seu nome">
+        </div>
+        </div>
+
+    <div class="payment-options-container">
+        <h4>Forma de Pagamento</h4>
+        <div class="payment-grid">
+            <label class="payment-option">
+                <input type="radio" name="payment-method" value="PIX" checked>
+                <span>PIX</span>
+            </label>
+            <label class="payment-option">
+                <input type="radio" name="payment-method" value="Cartão">
+                <span>Cartão</span>
+            </label>
+            <label class="payment-option">
+                <input type="radio" name="payment-method" value="Dinheiro">
+                <span>Dinheiro</span>
+            </label>
+        </div>
+    </div>
+</div>
+
+-->
+   
+    <div class="cart-footer">
+        <div class="summary-line">
+            <span>Subtotal</span>
+            <span>R$ 0,00</span>
+        </div>
+
+        <div class="summary-line total">
+            <span>Total</span>
+            <span>R$ 0,00</span>
+        </div>
+
+        <button class="finish-order-btn">
+            <i class="fab fa-whatsapp"></i> Finalizar Pedido
+        </button>
+    </div>
+
+</aside> 
+
+
+    <script src="scripts.js"></script>
+
+    
 </body>
 </html>
