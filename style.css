@@ -156,10 +156,11 @@ body {
 
 /* Container Principal da Vitrine */
 .vitrine {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+     justify-content: flex-start; 
     gap: 20px;
-    padding: 40px;
+    padding: 20px;
 }
 
 /* Esconde todas as vitrines por padrão, exceto a primeira ou a que o JS mandar mostrar */
@@ -184,8 +185,7 @@ body {
 .produto-card {
     display: flex;
     flex-direction: column; 
-    max-width: 250px;  
-    min-height: 250  px; 
+    height: 420px; /* AJUSTE CONFORME SEU DESIGN */
     justify-content: space-between; 
     background: #fff;
     border-radius: 15px;
@@ -230,7 +230,7 @@ body {
     align-items: center;
     text-align: center;
     margin-bottom: 8px;
-    height: 40px;          
+    height: 42px;          
     overflow: hidden;      
 }
 
@@ -238,9 +238,9 @@ body {
    font-size: 12px;
    text-align: center;
    align-items: center;
-    color: #666;
-    height: 50px;          
-    overflow: hidden;
+   color: #666;
+   height: 48px;          
+   overflow: hidden;
 }
 
 /* Preço em destaque */
@@ -718,9 +718,9 @@ body {
 
 @media (max-width: 1030px) and (min-width: 769px) {
      .vitrine {
-        grid-template-columns: repeat(3, 1fr);
-        padding: 20px;
-        gap: 15px;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 10px;
+        gap: 10px;
     }
     .categorias {
         padding: 10px 10px; 
@@ -743,7 +743,7 @@ body {
 
 @media (max-width: 800px) {
     .vitrine {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         padding: 10px;
         gap: 10px;
     }
@@ -879,10 +879,10 @@ body {
     
 
     /* Vitrine Mobile - 2 colunas */
-    
+
     .vitrine {
         grid-template-columns: repeat(2, 1fr) !important;
-        padding: 15px;
+        padding: 10px;
         gap: 10px;
     }
 
