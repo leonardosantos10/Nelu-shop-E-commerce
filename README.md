@@ -19,7 +19,7 @@ Este é um projeto de estudo de uma interface de e-commerce moderna, focada em p
 
 ## 
 
+[🔗 Acesse o site aqui](https://nelushop-e-commerce.netlify.app/)
 
-https://nelushop-e-commerce.netlify.app/
 
 
