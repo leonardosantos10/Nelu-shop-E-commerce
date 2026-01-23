@@ -157,7 +157,7 @@ body {
 /* Container Principal da Vitrine */
 .vitrine {
     display: flex;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 20px;
     padding: 20px;
 }
@@ -717,7 +717,8 @@ body {
 
 @media (max-width: 1030px) and (min-width: 769px) {
      .vitrine {
-        grid-template-columns: repeat(4, 1fr);
+        display: flex;
+         grid-template-columns: repeat(auto-fit, minmax(300px, 2fr)); 
         padding: 10px;
         gap: 10px;
     }
@@ -742,7 +743,8 @@ body {
 
 @media (max-width: 800px) {
     .vitrine {
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 2fr)); 
         padding: 10px;
         gap: 10px;
     }

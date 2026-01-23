@@ -67,28 +67,22 @@ document.getElementById('inputBusca')?.addEventListener('input', function() {
 // 2. SISTEMA DO CARRINHO (CART)
 // ==========================================
 
-let cartItems = [];
+let cartItem = null;
 
 // Abrir e Fechar Carrinho
 const cartSidebar = document.querySelector('.cart-sidebar');
 const cartOverlay = document.querySelector('.cart-overlay');
 const closeBtn = document.querySelector('.close-cart-btn');
-const openCartBtn = document.getElementById('open-cart');
 
 function abrirCarrinho() {
-    cartOverlay.classList.add('active');
     cartSidebar.classList.add('active');
+    cartOverlay.style.display = 'block';
 }
 
 function fecharCarrinho() {
     cartSidebar.classList.remove('active');
-    cartOverlay.classList.remove('active');
+    cartOverlay.style.display = 'none';
 }
-
-openCartBtn?.addEventListener('click', (e) => {
-    e.preventDefault();
-    abrirCarrinho();
-});
 
 // Eventos para fechar
 closeBtn?.addEventListener('click', fecharCarrinho);
@@ -96,63 +90,40 @@ cartOverlay?.addEventListener('click', fecharCarrinho);
 
 // Adicionar Produto
 function adicionarAoCarrinho(nome, preco, imagem) {
-    cartItems.push({ nome, preco: parseFloat(preco), imagem });
+    cartItem = { nome, preco, imagem };
     atualizarInterfaceCarrinho();
     abrirCarrinho();
 }
 
-
-function removerItem(index) {
-    cartItems.splice(index, 1);
+function removerItem() {
+    cartItem = null;
     atualizarInterfaceCarrinho();
 }
-
 
 function atualizarInterfaceCarrinho() {
     const container = document.querySelector('.cart-items');
     const subtotalEl = document.querySelector('.summary-line:not(.total) span:last-child');
     const totalEl = document.querySelector('.summary-line.total span:last-child');
-    const cartCount = document.getElementById('cart-count');
-
-    container.innerHTML = '';
-
-    if (cartItems.length === 0) {
-        container.innerHTML = '<p class="empty-cart">Seu carrinho está vazio.</p>';
-        subtotalEl.innerText = formatarBRL(0);
-        totalEl.innerText = formatarBRL(0);
-        cartCount.innerText = '0';
-        return;
-    }
-
-    let subtotal = 0;
-
-    cartItems.forEach((item, index) => {
-        subtotal += item.preco;
-
-        container.innerHTML += `
+    
+    if (cartItem) {
+        container.innerHTML = `
             <div class="cart-item">
-                <img src="${item.imagem}" alt="${item.nome}">
+                <img src="${cartItem.imagem}" alt="${cartItem.nome}">
                 <div class="cart-item-info">
-                    <span class="cart-item-name">${item.nome}</span>
-                    <span class="cart-item-price">${formatarBRL(item.preco)}</span>
+                    <span class="cart-item-name">${cartItem.nome}</span>
+                    <span class="cart-item-price">R$ ${cartItem.preco}</span>
                 </div>
-                <button onclick="removerItem(${index})" class="remove-item">&times;</button>
+                <button onclick="removerItem()" class="remove-item">&times;</button>
             </div>
         `;
-    });
-
-    subtotalEl.innerText = formatarBRL(subtotal);
-    totalEl.innerText = formatarBRL(subtotal);
-    cartCount.innerText = cartItems.length;
+        if (subtotalEl) subtotalEl.innerText = `R$ ${cartItem.preco}`;
+        if (totalEl) totalEl.innerText = `R$ ${cartItem.preco}`;
+    } else {
+        container.innerHTML = '<p class="empty-cart">Seu carrinho está vazio.</p>';
+        if (subtotalEl) subtotalEl.innerText = `R$ 0,00`;
+        if (totalEl) totalEl.innerText = `R$ 0,00`;
+    }
 }
-
-function formatarBRL(valor) {
-    return valor.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-    });
-}
-
 
 // ==========================================
 // 3. ALTERNAR ENTREGA / RETIRADA
@@ -183,95 +154,44 @@ document.querySelectorAll('.delivery-btn').forEach(button => {
 // ==========================================
 
 document.querySelector('.finish-order-btn')?.addEventListener('click', () => {
-    if (cartItems.length === 0) {
-        alert("Adicione produtos ao carrinho antes de finalizar!");
+    if (!cartItem) {
+        alert("Adicione um produto antes de finalizar!");
         return;
     }
 
-    const isDelivery =
-        document.querySelector('.delivery-btn.active')?.getAttribute('data-option') === 'delivery';
-
+    const isDelivery = document.querySelector('.delivery-btn.active').getAttribute('data-option') === 'delivery';
     let mensagem = `*NOVO PEDIDO*%0A%0A`;
-
-    let total = 0;
-
-    cartItems.forEach((item, index) => {
-        mensagem += `*${index + 1}.* ${item.nome}%0A`;
-        mensagem += `Valor: ${formatarBRL(item.preco)}%0A%0A`;
-        total += item.preco;
-    });
-
-    mensagem += `*TOTAL:* ${formatarBRL(total)}%0A`;
+    mensagem += `*Produto:* ${cartItem.nome}%0A`;
+    mensagem += `*Valor:* R$ ${cartItem.preco}%0A`;
     mensagem += `--------------------------%0A`;
 
     if (isDelivery) {
-        const nome = document.getElementById('cliente-nome')?.value;
-        const tel = document.getElementById('cliente-telefone')?.value;
-        const end = document.getElementById('cliente-endereco')?.value;
-         const cep = document.getElementById('cliente-cep')?.value;
+        const nome = document.querySelector('#delivery-form-container input[placeholder*="Silva"]')?.value;
+        const tel = document.querySelector('#delivery-form-container input[placeholder*="0000"]')?.value;
+        const end = document.querySelector('#delivery-form-container input[placeholder*="Rua"]')?.value;
+        const cep = document.querySelector('#delivery-form-container input[placeholder*="00000-000"]')?.value;
 
-        if (!nome || !end) {
-            alert("Preencha seu nome e endereço!");
-            return;
-        }
+        if(!nome || !end) return alert("Preencha seu nome e endereço!");
 
-        mensagem += `*Tipo:* Entrega%0A`;
-        mensagem += `*Cliente:* ${nome}%0A`;
-        mensagem += `*WhatsApp:* ${tel}%0A`;
-        mensagem += `*Endereço:* ${end}%0A`;
-        mensagem += `*CEP:* ${cep}%0A`;
+        mensagem += `*Tipo:* Entrega%0A*Cliente:* ${nome}%0A*WhatsApp:* ${tel}%0A*Endereço:* ${end}%0A*CEP:* ${cep}`;
     } else {
         const nome = document.querySelector('#pickup-form-container input[placeholder*="buscar"]')?.value;
         const data = document.querySelector('#pickup-form-container input[type="date"]')?.value;
         const hora = document.querySelector('#pickup-form-container select')?.value;
 
-        if (!nome || !data) {
-            alert("Preencha o nome e a data da retirada!");
-            return;
-        }
+        if(!nome || !data) return alert("Preencha o nome e a data da retirada!");
 
-        mensagem += `*Tipo:* Retirada%0A`;
-        mensagem += `*Nome:* ${nome}%0A`;
-        mensagem += `*Data:* ${data}%0A`;
-        mensagem += `*Horário:* ${hora}%0A`;
+        mensagem += `*Tipo:* Retirada%0A*Nome:* ${nome}%0A*Data:* ${data}%0A*Horário:* ${hora}`;
     }
 
     const radioPagamento = document.querySelector('input[name="pay"]:checked');
-    const pagamento = radioPagamento
-        ? radioPagamento.parentElement.innerText.trim()
-        : "Não informado";
-
+    const pagamento = radioPagamento ? radioPagamento.parentElement.innerText.trim() : "Não informado";
+    
     mensagem += `%0A*Pagamento:* ${pagamento}`;
 
-    const seuNumero = "5511911089322"; // SEU NÚMERO
+    const seuNumero = "55119XXXXXXXX"; // <-- COLOQUE SEU NÚMERO AQUI
     window.open(`https://wa.me/${seuNumero}?text=${mensagem}`, '_blank');
 });
-
-
-// ==========================================
-// 2.1 BOTÃO COMPRAR → ADICIONAR AO CARRINHO
-// ==========================================
-
-document.querySelectorAll('.btn-comprar').forEach(botao => {
-    botao.addEventListener('click', () => {
-
-        const card = botao.closest('.produto-card');
-
-        const nome = card.querySelector('h3').innerText;
-
-        const precoTexto = card.querySelector('.preco').innerText;
-        const preco = precoTexto
-            .replace('R$', '')
-            .replace('.', '')
-            .replace(',', '.')
-            .trim();
-
-        const imagem = card.querySelector('img').getAttribute('src');
-
-        adicionarAoCarrinho(nome, preco, imagem);
-    });
-});
-
 
 // ==========================================
 // 5. ESTADO INICIAL
@@ -279,36 +199,3 @@ document.querySelectorAll('.btn-comprar').forEach(botao => {
 window.onload = () => {
     trocarCategoria('vitrine-todos');
 };
-
-
-
-
-// Funções para o Menu Mobile
-const btnAbrir = document.getElementById('btn-menu-abrir');
-const btnFechar = document.getElementById('btn-menu-fechar');
-const menuCat = document.getElementById('menu-categorias');
-const overlay = document.getElementById('menu-overlay');
-
-function gerenciarMenu(abrir) {
-    if (abrir) {
-        menuCat.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Trava a tela
-    } else {
-        menuCat.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Destrava
-    }
-}
-
-// Ouvintes de eventos
-btnAbrir?.addEventListener('click', () => gerenciarMenu(true));
-btnFechar?.addEventListener('click', () => gerenciarMenu(false));
-overlay?.addEventListener('click', () => gerenciarMenu(false));
-
-// Fecha o menu se clicar em qualquer link de categoria (importante!)
-document.querySelectorAll('.categorias a').forEach(link => {
-    link.addEventListener('click', () => gerenciarMenu(false));
-});
-
-
