@@ -67,63 +67,135 @@ document.getElementById('inputBusca')?.addEventListener('input', function() {
 // 2. SISTEMA DO CARRINHO (CART)
 // ==========================================
 
-let cartItem = null;
+let cart = [];
 
 // Abrir e Fechar Carrinho
 const cartSidebar = document.querySelector('.cart-sidebar');
 const cartOverlay = document.querySelector('.cart-overlay');
 const closeBtn = document.querySelector('.close-cart-btn');
+const openCartBtn = document.getElementById('open-cart');
 
 function abrirCarrinho() {
     cartSidebar.classList.add('active');
-    cartOverlay.style.display = 'block';
+    cartOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Impede scroll quando carrinho abre
 }
 
 function fecharCarrinho() {
     cartSidebar.classList.remove('active');
-    cartOverlay.style.display = 'none';
+    cartOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Restaura scroll
 }
 
-// Eventos para fechar
+// Eventos para abrir e fechar carrinho
+openCartBtn?.addEventListener('click', abrirCarrinho);
 closeBtn?.addEventListener('click', fecharCarrinho);
 cartOverlay?.addEventListener('click', fecharCarrinho);
 
 // Adicionar Produto
 function adicionarAoCarrinho(nome, preco, imagem) {
-    cartItem = { nome, preco, imagem };
+    const produto = {
+        id: Date.now(), // ID único para cada item
+        nome,
+        preco,
+        imagem,
+        quantidade: 1
+    };
+    
+    cart.push(produto);
     atualizarInterfaceCarrinho();
     abrirCarrinho();
 }
 
-function removerItem() {
-    cartItem = null;
+// Remover item específico do carrinho
+function removerItem(id) {
+    cart = cart.filter(item => item.id !== id);
     atualizarInterfaceCarrinho();
+}
+
+// Atualizar quantidade do item
+function atualizarQuantidade(id, novaQuantidade) {
+    const item = cart.find(item => item.id === id);
+    if (item) {
+        if (novaQuantidade <= 0) {
+            removerItem(id);
+        } else {
+            item.quantidade = novaQuantidade;
+            atualizarInterfaceCarrinho();
+        }
+    }
 }
 
 function atualizarInterfaceCarrinho() {
     const container = document.querySelector('.cart-items');
     const subtotalEl = document.querySelector('.summary-line:not(.total) span:last-child');
     const totalEl = document.querySelector('.summary-line.total span:last-child');
+    const cartCountEl = document.getElementById('cart-count');
     
-    if (cartItem) {
-        container.innerHTML = `
-            <div class="cart-item">
-                <img src="${cartItem.imagem}" alt="${cartItem.nome}">
-                <div class="cart-item-info">
-                    <span class="cart-item-name">${cartItem.nome}</span>
-                    <span class="cart-item-price">R$ ${cartItem.preco}</span>
-                </div>
-                <button onclick="removerItem()" class="remove-item">&times;</button>
-            </div>
-        `;
-        if (subtotalEl) subtotalEl.innerText = `R$ ${cartItem.preco}`;
-        if (totalEl) totalEl.innerText = `R$ ${cartItem.preco}`;
-    } else {
+    if (cart.length === 0) {
         container.innerHTML = '<p class="empty-cart">Seu carrinho está vazio.</p>';
-        if (subtotalEl) subtotalEl.innerText = `R$ 0,00`;
-        if (totalEl) totalEl.innerText = `R$ 0,00`;
+        if (subtotalEl) subtotalEl.innerText = 'R$ 0,00';
+        if (totalEl) totalEl.innerText = 'R$ 0,00';
+        if (cartCountEl) cartCountEl.innerText = '0';
+    } else {
+        let html = '';
+        let subtotal = 0;
+        let totalItems = 0;
+        
+        cart.forEach(item => {
+            // Converte preço brasileiro para número: remove "R$ ", espaços, pontos e troca vírgula por ponto
+            const precoLimpo = item.preco.replace('R$', '').replace(/\s/g, '').replace(/\./g, '').replace(',', '.');
+            const precoNumerico = parseFloat(precoLimpo);
+            const subtotalItem = precoNumerico * item.quantidade;
+            subtotal += subtotalItem;
+            totalItems += item.quantidade;
+            
+            html += `
+                <div class="cart-item">
+                    <img src="${item.imagem}" alt="${item.nome}">
+                    <div class="cart-item-info">
+                        <span class="cart-item-name">${item.nome}</span>
+                        <span class="cart-item-price">R$ ${item.preco}</span>
+                        <div class="quantity-controls">
+                            <button onclick="atualizarQuantidade(${item.id}, ${item.quantidade - 1})" class="qty-btn">-</button>
+                            <span class="qty">${item.quantidade}</span>
+                            <button onclick="atualizarQuantidade(${item.id}, ${item.quantidade + 1})" class="qty-btn">+</button>
+                        </div>
+                    </div>
+                    <button onclick="removerItem(${item.id})" class="remove-item">&times;</button>
+                </div>
+            `;
+        });
+        
+        container.innerHTML = html;
+        
+        // Formatação brasileira para valores
+        const subtotalFormatado = subtotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+        
+        if (subtotalEl) subtotalEl.innerText = `R$ ${subtotalFormatado}`;
+        if (totalEl) totalEl.innerText = `R$ ${subtotalFormatado}`;
+        if (cartCountEl) cartCountEl.innerText = totalItems.toString();
     }
 }
+
+// ==========================================
+// EVENTO BOTÃO COMPRAR
+// ==========================================
+
+document.querySelectorAll('.btn-comprar').forEach(botao => {
+    botao.addEventListener('click', () => {
+        const card = botao.closest('.produto-card');
+
+        const nome = card.querySelector('h3').innerText;
+        const preco = card.querySelector('.preco').innerText
+            .replace('R$', '')
+            .trim();
+
+        const imagem = card.querySelector('img').getAttribute('src');
+
+        adicionarAoCarrinho(nome, preco, imagem);
+    });
+});
 
 // ==========================================
 // 3. ALTERNAR ENTREGA / RETIRADA
@@ -154,15 +226,27 @@ document.querySelectorAll('.delivery-btn').forEach(button => {
 // ==========================================
 
 document.querySelector('.finish-order-btn')?.addEventListener('click', () => {
-    if (!cartItem) {
-        alert("Adicione um produto antes de finalizar!");
+    if (cart.length === 0) {
+        alert("Adicione produtos antes de finalizar!");
         return;
     }
 
     const isDelivery = document.querySelector('.delivery-btn.active').getAttribute('data-option') === 'delivery';
     let mensagem = `*NOVO PEDIDO*%0A%0A`;
-    mensagem += `*Produto:* ${cartItem.nome}%0A`;
-    mensagem += `*Valor:* R$ ${cartItem.preco}%0A`;
+    
+    // Lista todos os produtos
+    mensagem += `*PRODUTOS:*%0A`;
+    let total = 0;
+    cart.forEach(item => {
+        // Converte preço brasileiro para número: remove "R$ ", espaços, pontos e troca vírgula por ponto
+        const precoLimpo = item.preco.replace('R$', '').replace(/\s/g, '').replace(/\./g, '').replace(',', '.');
+        const precoNumerico = parseFloat(precoLimpo);
+        const subtotalItem = precoNumerico * item.quantidade;
+        total += subtotalItem;
+        mensagem += `• ${item.nome} (Qtd: ${item.quantidade}) - R$ ${item.preco}%0A`;
+    });
+    
+    mensagem += `%0A*TOTAL: R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}*%0A`;
     mensagem += `--------------------------%0A`;
 
     if (isDelivery) {

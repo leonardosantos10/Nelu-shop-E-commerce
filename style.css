@@ -39,6 +39,7 @@ body {
     font-family: 'Arial Black', sans-serif; 
     background: linear-gradient(to right, #ff2200f5, rgb(249, 241, 7)); 
     -webkit-background-clip: text;
+    background-clip: text; /* Propriedade padrão para compatibilidade */
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
 }
@@ -156,10 +157,11 @@ body {
 
 /* Container Principal da Vitrine */
 .vitrine {
-    display: flex;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 20px;
-    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 280px)); 
+    gap: 60px; /* Aumentado drasticamente de 40px para 60px */
+    padding: 50px; /* Aumentado de 40px para 50px */
+    justify-content: center; /* Centraliza os cards quando não preenchem a linha */
 }
 
 /* Esconde todas as vitrines por padrão, exceto a primeira ou a que o JS mandar mostrar */
@@ -184,12 +186,15 @@ body {
 .produto-card {
     display: flex;
     flex-direction: column; 
-    height: 420px; /* AJUSTE CONFORME SEU DESIGN */
+    width: 280px; /* LARGURA FIXA */
+    height: 420px; /* ALTURA FIXA */
     justify-content: space-between; 
     background: #fff;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* margin removido para não conflitar com gap do grid */
 }
 
 
@@ -717,36 +722,59 @@ body {
 
 @media (max-width: 1030px) and (min-width: 769px) {
      .vitrine {
-        display: flex;
-         grid-template-columns: repeat(auto-fit, minmax(300px, 2fr)); 
-        padding: 10px;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 260px)); 
+        justify-content: center;
+        padding: 45px; /* Aumentado de 35px para 45px */
+        gap: 50px; /* Aumentado de 35px para 50px */
     }
     .categorias {
-        padding: 10px 10px; 
+        padding: 15px 20px; /* Melhorado espaçamento */
         display: flex;
         justify-content: center;
-        flex-wrap: nowrap; 
+        flex-wrap: wrap; /* Permitir quebra em telas menores */
     }
 
     .categorias a {
-        margin: 0 15px; 
-        font-size: 15px; 
+        margin: 5px 10px; /* Reduzido margem para caber mais */
+        font-size: 14px; 
         gap: 5px; 
     }
 
     .categorias i {
-        font-size: 15px; 
+        font-size: 14px; 
+    }
+    
+    .cabecalho {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        font-size: 18px;
     }
 }
 
 
 @media (max-width: 800px) {
     .vitrine {
-        display: flex;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 2fr)); 
-        padding: 10px;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 240px)); 
+        justify-content: center;
+        padding: 40px; /* Aumentado de 30px para 40px */
+        gap: 45px; /* Aumentado de 30px para 45px */
+    }
+    
+    .cabecalho {
+        padding: 12px 15px;
+    }
+    
+    .logo {
+        font-size: 16px;
+    }
+    
+    .busca {
+        max-width: 250px;
     }
 }
 
@@ -879,26 +907,231 @@ body {
 
     
 
-    /* Vitrine Mobile - 2 colunas */
+    /* Vitrine Mobile - 2 colunas com cards fixos */
 
     .vitrine {
-        grid-template-columns: repeat(2, 1fr) !important;
-        padding: 10px;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 160px); /* Cards fixos de 160px */
+        justify-content: center;
+        padding: 35px; /* Aumentado de 30px para 35px */
+        gap: 35px; /* Aumentado de 25px para 35px */
     }
 
     .produto-card {
-        max-width: none;
+        width: 160px; /* Cards fixos no mobile */
+        height: 380px; /* Altura ajustada para mobile */
+        padding: 12px; /* Reduzido padding para mobile */
+        /* margin removido para não conflitar com gap do grid */
+    }
+    
+    .produto-info h3 {
+        font-size: 14px;
+        height: 40px;
+    }
+    
+    .produto-info p {
+        font-size: 11px;
+        height: 40px;
+    }
+    
+    .preco {
+        font-size: 18px;
+    }
+    
+    .btn-comprar {
+        height: 40px;
+        font-size: 14px;
     }
 }
 
-/* Telas muito pequenas (1 coluna) */
-@media (max-width: 550px) {
-    /* .vitrine {
-        grid-template-columns: 1fr !important;
-    } */
-
-     .busca {
-        display: none;
+/* Telas muito pequenas (1 coluna com cards centralizados) */
+@media (max-width: 400px) {
+    .vitrine {
+        grid-template-columns: repeat(1, 280px); /* 1 coluna com largura fixa */
+        justify-content: center;
+        padding: 35px; /* Aumentado de 30px para 35px */
+        gap: 40px; /* Aumentado de 30px para 40px */
+    }
+    
+    .produto-card {
+        width: 280px;
+        height: 400px;
+        padding: 15px;
+        /* margin removido para não conflitar com gap do grid */
+    }
+    
+    .cabecalho {
+        padding: 10px;
+    }
+    
+    .logo {
+        font-size: 14px;
+    }
+    
+    .busca {
+        max-width: 200px;
+    }
+    
+    .busca input {
+        font-size: 14px;
+        padding: 8px 12px;
     }
 }
+
+/* ==========================================
+   ESTILOS PARA CONTROLES DE QUANTIDADE
+   ========================================== */
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.qty-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ddd;
+    background: #f8f9fa;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.qty-btn:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.qty {
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* ==========================================
+   RESPONSIVIDADE DO CARRINHO
+   ========================================== */
+
+@media (max-width: 768px) {
+    .cart-sidebar {
+        width: 100%;
+        max-width: 380px;
+    }
+    
+    .cart-header {
+        padding: 15px;
+    }
+    
+    .cart-body {
+        padding: 15px;
+    }
+    
+    .cart-footer {
+        padding: 15px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .finish-order-btn {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-sidebar {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .cart-header h3 {
+        font-size: 16px;
+    }
+    
+    .cart-item {
+        padding: 8px;
+        gap: 10px;
+    }
+    
+    .cart-item img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .cart-item-name {
+        font-size: 12px;
+    }
+    
+    .cart-item-price {
+        font-size: 12px;
+    }
+    
+    .qty-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+    
+    .qty {
+        font-size: 12px;
+    }
+}
+
+/* ==========================================
+   MELHORIAS DE RESPONSIVIDADE GERAL
+   ========================================== */
+
+@media (max-width: 1200px) {
+    .rodape-container {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .rodape-container {
+        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .rodape-coluna {
+        min-width: 200px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .conteudo-banner h1 {
+        font-size: 36px;
+    }
+    
+    .conteudo-banner p {
+        font-size: 16px;
+    }
+    
+    .rodape-container {
+        gap: 20px;
+    }
+    
+    .rodape-coluna h3 {
+        font-size: 16px;
+    }
+    
+    .rodape-coluna ul li a {
+        font-size: 13px;
+    }
+}
+
+
